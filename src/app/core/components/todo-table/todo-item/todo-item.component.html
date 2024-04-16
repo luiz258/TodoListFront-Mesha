@@ -2,25 +2,25 @@
 @for (item of TodoArray; track item.id; let idx = $index, e = $even) {
   <div class="col s12 m6">
     <div class="card" [ngClass]="{
-        'blue-grey lighten-3': item.isCompleted === true,
-        'teal darken-2': item.isCompleted === false
+        'blue-grey lighten-3': item.isCompleted === false,
+        'teal darken-2': item.isCompleted === true
       }">
       <div class="card-content white-text">
         <span class="card-title">
           <span>{{item.title}}</span>
 
-          <i class="waves-effect small material-icons right">mode_edit</i>
+          <i class="waves-effect small material-icons right" (click)="edit(item)">mode_edit</i>
         </span>
         <span>{{ item.description }}</span>
         <div class="display-flex">
           @if( !item.isCompleted){
             <a class="btn" mat-button color="" (click)="toggle(item.id)">
-              <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="check_box"></mat-icon>
-              Concluida</a>
+              <mat-icon aria-hidden="false" aria-label="Example home icon"  fontIcon="check_box_outline_blank"></mat-icon>
+              Concluir</a>
 
           } @else{
             <a class="btn" mat-button color="primary" (click)="toggle(item.id)">
-              <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="check_box_outline_blank"></mat-icon> Pedente </a>
+              <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="check_box"></mat-icon> Finalizado! </a>
           }
         </div>
       </div>

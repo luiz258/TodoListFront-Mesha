@@ -1,0 +1,22 @@
+.display-flex{
+  display: flex;
+  flex-direction: column;
+  align-content: space-around;
+  flex-wrap: nowrap;
+  align-items: stretch;
+
+  padding: 20px;
+}
+
+mat-slide-toggle {
+  width: 30%;
+  height: 50px;
+}
+
+mat-form-field{
+  width: 100%;
+}
+
+span{
+  font-size: large;
+}

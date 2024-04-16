@@ -18,46 +18,20 @@ import {MatButtonModule} from '@angular/material/button';
 })
 export class TodoItemComponent {
   @Input() TodoArray: Todo[] | any;
-  editMode = false;
-  titleInput: string = "";
   @Output()
   toggleEvent = new EventEmitter<string>();
 
-  constructor(private todoService: TodoService){
+  @Output()
+  editEvent = new EventEmitter<any>();
 
-  }
+  constructor(private todoService: TodoService){ }
 
-
-
-
-
-  updateTask() {
-    // this.todo.done = !this.todo.done;
-    // this.todoData.updateTodo(this.todo);
-    // if (this.todo.done) this.newItemEvent.emit(this.todo.label + ' is done !');
-  }
-
-
-
-  updateTitle() {
-    // var temp = this.todo.label;
-    // this.todo.label = this.titleInput;
-    // this.todoData.updateTodo(this.todo);
-    // this.editMode = false;
-    // this.newItemEvent.emit(temp + ' has been updated to ' + this.todo.label);
+  edit(todo:any) {
+    this.editEvent.emit(todo);
   }
 
   toggle(idTodo: string) {
-    console.log(idTodo, 'idtodo');
     this.toggleEvent.emit(idTodo);
-
-  }
-  enterEditMode() {
-    this.editMode = true;
-  }
-
-  ngOnInit() {
-
   }
 
 }

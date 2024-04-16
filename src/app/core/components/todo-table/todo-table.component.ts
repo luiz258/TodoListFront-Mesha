@@ -8,12 +8,14 @@ import { TodoService } from '../../service/todo.service';
 import { SecurityUltil } from '../../ultil/security.ultil';
 
 import { HttpClient } from '@angular/common/http';
-
+import {MatDialog, MatDialogModule} from '@angular/material/dialog';
+import { RegisterTodoComponent } from '../../../features/register-todo/register-todo/register-todo.component';
+import { EditTodoComponent } from '../../../features/edit-todo/edit-todo/edit-todo.component';
 @Component({
   selector: 'app-todo-table',
   standalone: true,
   providers: [TodoService, HttpClient],
-  imports: [ MatPaginatorModule, TodoItemComponent, JsonPipe,NgClass],
+  imports: [ MatPaginatorModule, TodoItemComponent, JsonPipe, NgClass, MatDialogModule],
   templateUrl: './todo-table.component.html',
   styleUrl: './todo-table.component.scss'
 
@@ -24,11 +26,13 @@ export class TodoTableComponent {
   page = 1;
   public todoList: any ;
 
-  constructor(private todoService: TodoService) {
+  constructor(
+    private todoService: TodoService,
+    public dialog: MatDialog
+  ) {
   }
 
   getData(){
-    console.log(this.todoList);
     const idUser = SecurityUltil.getUser()?.id;
     this.todoService.listTodo(idUser, this.page).subscribe(
       (data)=>{
@@ -39,18 +43,16 @@ export class TodoTableComponent {
   ngOnInit() {
     this.getData()
   }
-  updateList() {
-    // this.todos = this.todoData.getTodos();
-  }
 
   addTask() {
-    let todo = {
+    let dialogRef = this.dialog.open(RegisterTodoComponent, {
+      height: '400px',
+      width: '600px',
+    });
 
-    } as Todo;
-    this.todoService.createTodo(todo).subscribe(
-      (data) =>{},
-      (error)=>{}
-    );
+    dialogRef.afterClosed().subscribe(() => {
+      this.getData();
+    });
   }
 
   togleStatus(id:string) {
@@ -60,6 +62,12 @@ export class TodoTableComponent {
       },
       (error) =>{},
     );
+  }
+
+  editAtributes(todo:Todo){
+    let dialogRef = this.dialog.open(EditTodoComponent, {
+      data: todo,
+    });
   }
 
 }

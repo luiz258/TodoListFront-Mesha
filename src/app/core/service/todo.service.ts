@@ -3,6 +3,7 @@ import { Todo } from '../interface/todo.interface';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { DeleteTodo } from '../dto/delete.todo';
+import { CreateTodo } from '../dto/create.todo';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,7 @@ export class TodoService {
 
   public url = "https://localhost:7037/";
 
-createTodo(data: Todo): Observable<any> {
+createTodo(data: CreateTodo): Observable<any> {
   return this.http.post(`${this.url}api/Todo/v1/post`, data);
 }
 
