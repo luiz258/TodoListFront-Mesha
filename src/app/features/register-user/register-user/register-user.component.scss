@@ -1,0 +1,21 @@
+.display-flex{
+  display: flex;
+  flex-direction: column;
+  align-content: stretch;
+  align-items: stretch;
+}
+
+mat-card{
+  width: 500px;
+}
+
+.display{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+mat-card-title{
+  padding-top: 10px;
+  padding-bottom: 10px;
+}

@@ -1,0 +1,31 @@
+@if (!loading) {
+<div class="display">
+  <mat-card>
+    <mat-card-content>
+      <mat-card-title>Registrar Usuario</mat-card-title>
+      <div class="display-flex">
+        <mat-form-field>
+          <input type="text" matInput [formControl]="userName" placeholder="Usuario" />
+        </mat-form-field>
+
+        <mat-form-field>
+          <input type="text" matInput [formControl]="fullName" placeholder="Nome Completo" />
+        </mat-form-field>
+
+        <mat-form-field>
+          <input type="password" matInput [formControl]="password" placeholder="Senha" />
+        </mat-form-field>
+        <mat-form-field>
+          <input type="password" matInput [formControl]="confirmPassword" placeholder="Confirmar Senha" />
+        </mat-form-field>
+        <div class="button">
+          <button type="submit" (click)="submit()" [disabled]="!validatePassword" mat-button>Registrar</button>
+        </div>
+
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>
+}@else {
+<app-spinner />
+}

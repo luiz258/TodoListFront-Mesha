@@ -1,0 +1,24 @@
+<app-header />
+
+<mat-sidenav-container class="example-container" autosize>
+  <mat-sidenav #sidenav class="example-sidenav" mode="side" opened="true" (mouseenter)="mouseenter()"
+    (mouseleave)="mouseleave()">
+    <mat-nav-list>
+      <mat-list-item (click)="showSubmenu = !showSubmenu" class="parent">
+        <span class="full-width">
+
+          <mat-icon mat-list-icon>home</mat-icon>
+          Home
+        </span>
+
+      </mat-list-item>
+
+    </mat-nav-list>
+
+  </mat-sidenav>
+
+  <div class="padding">
+    <router-outlet></router-outlet>
+  </div>
+
+</mat-sidenav-container>

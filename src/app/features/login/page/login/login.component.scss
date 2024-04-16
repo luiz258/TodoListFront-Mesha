@@ -1,0 +1,40 @@
+mat-card-title,
+mat-card-content {
+  display: flex;
+  justify-content: center;
+}
+
+mat-card-title{
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+:host {
+  display: flex;
+  justify-content: center;
+  margin: 100px 0px;
+}
+
+.mat-form-field {
+  width: 100%;
+  min-width: 300px;
+}
+
+.button {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.display-flex{
+  display: flex;
+  flex-direction: column;
+  align-content: stretch;
+  align-items: stretch;
+
+
+}
+
+.error{
+ color: red;
+ width: 200px;
+}

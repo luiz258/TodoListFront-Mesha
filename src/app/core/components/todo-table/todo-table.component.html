@@ -1,0 +1,11 @@
+
+<div class="m">
+  <h1>Lista de Afazeres</h1>
+  <div class="p">
+    <button class="btn" (click)="addTask()">add task</button>
+  </div>
+
+  <ul>
+    <app-todo-item [TodoArray]="todoList"  (toggleEvent)="togleStatus($event)" />
+  </ul>
+</div>

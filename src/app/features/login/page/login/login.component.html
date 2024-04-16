@@ -1,0 +1,30 @@
+@if (!loading) {
+<mat-card>
+  <mat-card-title>Login</mat-card-title>
+  <mat-card-content>
+    <div class="display-flex">
+      <mat-form-field>
+        <input type="text" matInput [formControl]="userName" placeholder="Username" />
+      </mat-form-field>
+
+      <mat-form-field>
+        <input type="password" matInput [formControl]="password" placeholder="Password" />
+      </mat-form-field>
+
+
+      @if (errorSection) {
+      @for (err of errorSection; track errorSection[0].errorMessage) {
+      <div class="error"> {{err.errorMessage}} </div>
+      }
+      }
+      <div class="button">
+        <button type="submit" (click)="submit()" mat-button>Login</button>
+      </div>
+
+    </div>
+  </mat-card-content>
+</mat-card>
+
+}@else {
+<app-spinner />
+}
